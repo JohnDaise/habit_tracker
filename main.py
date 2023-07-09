@@ -65,6 +65,13 @@ pixel_data = {
 
 put_pixel_endpoint = f"{pixela_endpoint}/{USERNAME}/graphs/{GRAPH_ID}/{datetime_string}"
 
-response = requests.put(url=put_pixel_endpoint, json=pixel_data, headers=headers)
+# response = requests.put(url=put_pixel_endpoint, json=pixel_data, headers=headers)
+# response.raise_for_status()
+# print(response.text)
+
+
+delete_pixel_endpoint = f"{pixela_endpoint}/{USERNAME}/graphs/{GRAPH_ID}/{datetime_string}"
+
+response = requests.delete(url=delete_pixel_endpoint, headers=headers)
 response.raise_for_status()
 print(response.text)
