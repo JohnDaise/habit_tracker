@@ -51,18 +51,17 @@ datetime_string = today.strftime("%Y%m%d")
 
 pixel_data = {
     "date": datetime_string,
-    "quantity": "6.252",
+    "quantity": input("How many miles did you cycle today? "),
 }
 
 
 # Add Pixel
-# response = requests.post(url=post_pixel_endpoint, json=pixel_data, headers=headers)
-# response.raise_for_status()
-# print(response.text)
+response = requests.post(url=post_pixel_endpoint, json=pixel_data, headers=headers)
+response.raise_for_status()
+print(response.text)
 
 
 # Update Pixel
-
 put_pixel_endpoint = f"{pixela_endpoint}/{USERNAME}/graphs/{GRAPH_ID}/{datetime_string}"
 
 # response = requests.put(url=put_pixel_endpoint, json=pixel_data, headers=headers)
@@ -72,6 +71,6 @@ put_pixel_endpoint = f"{pixela_endpoint}/{USERNAME}/graphs/{GRAPH_ID}/{datetime_
 
 delete_pixel_endpoint = f"{pixela_endpoint}/{USERNAME}/graphs/{GRAPH_ID}/{datetime_string}"
 
-response = requests.delete(url=delete_pixel_endpoint, headers=headers)
-response.raise_for_status()
-print(response.text)
+# response = requests.delete(url=delete_pixel_endpoint, headers=headers)
+# response.raise_for_status()
+# print(response.text)
