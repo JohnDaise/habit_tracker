@@ -1,4 +1,5 @@
 import requests
+from datetime import datetime
 
 USERNAME = "jdaise"
 TOKEN = "ifaliq8fq8hf3q"
@@ -13,6 +14,7 @@ user_params = {
     "notMinor": "yes",
 }
 
+# Create User
 # response = requests.post(url=pixela_endpoint, json=user_params)
 # response.raise_for_status()
 # print(response.text)
@@ -31,16 +33,28 @@ graph_config = {
 headers = {
     "X-USER-TOKEN": TOKEN
 }
+
+# Create Graph
 # response = requests.post(url=graph_endpoint, json=graph_config, headers=headers)
 # print(response.text)
 
 post_pixel_endpoint = f"https://pixe.la/v1/users/{USERNAME}/graphs/{GRAPH_ID}"
 
-post_pixel_params = {
-    "date": "20230709",
-    "quantity": "2",
+# post_pixel_params = {
+#     "date": "20230709",
+#     "quantity": "2",
+# }
+
+today = datetime(year=2023, month=7, day=8)
+# print(today.strftime("%Y%m%d"))
+
+pixel_data = {
+    "date": today.strftime("%Y%m%d"),
+    "quantity": "8.354",
 }
 
-response = requests.post(url=post_pixel_endpoint, json=post_pixel_params, headers=headers)
+
+# Add Pixel
+response = requests.post(url=post_pixel_endpoint, json=pixel_data, headers=headers)
 response.raise_for_status()
 print(response.text)
